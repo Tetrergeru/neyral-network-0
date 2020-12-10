@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,7 +52,8 @@ namespace NeuralNetwork1
 				progressBar1.Invoke(new FormUpdater(UpdateLearningInfo),new Object[] {progress, error, elapsedTime});
 				return;
 			}
-            StatusLabel.Text = "Accuracy: " + error.ToString();
+
+            StatusLabel.Text = "Accuracy: " + error;
             int prgs = (int)Math.Round(progress*100);
 			prgs = Math.Min(100, Math.Max(0,prgs));
             elapsedTimeLabel.Text = "Затраченное время : " + elapsedTime.Duration().ToString(@"hh\:mm\:ss\:ff");
@@ -63,10 +65,7 @@ namespace NeuralNetwork1
         {
             label1.Text = figure.ToString();
 
-            if (figure.Correct())
-                label1.ForeColor = Color.Green;
-            else
-                label1.ForeColor = Color.Red;
+            label1.ForeColor = figure.Correct() ? Color.Green : Color.Red;
 
             label1.Text = "Распознано : " + figure.recognizedClass.ToString();
 
@@ -126,20 +125,17 @@ namespace NeuralNetwork1
             this.Enabled = false;
             //  Тут просто тестирование новой выборки
             //  Создаём новую обучающую выборку
-            SamplesSet samples = new SamplesSet();
+            var samples = new SamplesSet();
 
-            for (int i = 0; i < (int)TrainingSizeCounter.Value; i++)
+            for (var i = 0; i < (int)TrainingSizeCounter.Value; i++)
                 samples.AddSample(generator.GenerateFigure());
 
-            double accuracy = net.TestOnDataSet(samples);
+            var accuracy = net.TestOnDataSet(samples);
             
             StatusLabel.Text = string.Format("Точность на тестовой выборке : {0,5:F2}%", accuracy*100);
-            if (accuracy*100 >= AccuracyCounter.Value)
-                StatusLabel.ForeColor = Color.Green;
-            else
-                StatusLabel.ForeColor = Color.Red;
+            StatusLabel.ForeColor = accuracy*100 >= AccuracyCounter.Value ? Color.Green : Color.Red;
 
-            this.Enabled = true;
+            Enabled = true;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -156,7 +152,7 @@ namespace NeuralNetwork1
 
             AccordNet = new AccordNet(structure) {updateDelegate = UpdateLearningInfo};
 
-            net = AccordNet;
+            SetNetwork();
         }
 
         private void classCounter_ValueChanged(object sender, EventArgs e)
@@ -164,7 +160,7 @@ namespace NeuralNetwork1
             generator.figure_count = (int)classCounter.Value;
             var vals = netStructureBox.Text.Split(';');
             int outputNeurons;
-            if (int.TryParse(vals.Last(),out outputNeurons))
+            if (int.TryParse(vals.Last(), out outputNeurons))
             {
                 vals[vals.Length - 1] = classCounter.Value.ToString();
                 netStructureBox.Text = vals.Aggregate((partialPhrase, word) => $"{partialPhrase};{word}");
@@ -192,6 +188,11 @@ namespace NeuralNetwork1
         }
 
         private void netTypeBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetNetwork();
+        }
+
+        private void SetNetwork()
         {
             if (netTypeBox.SelectedIndex == 0)
                 net = CustomNet;

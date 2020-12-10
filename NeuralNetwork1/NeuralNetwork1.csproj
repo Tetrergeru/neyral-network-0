@@ -81,6 +81,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="ImageGenerator.cs" />
+    <Compile Include="Matrix.cs" />
     <Compile Include="Neural.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
