@@ -68,7 +68,7 @@ namespace NeuralNetwork1
             return iters;
         }
 
-        public override double TrainOnDataSet(SamplesSet samplesSet, int epochs_count, double acceptable_erorr, bool parallel = true)
+        public override double TrainOnDataSet(SamplesSet samplesSet, int epochs_count, double acceptableError, bool parallel = true)
         {
             //  Сначала надо сконструировать массивы входов и выходов
             double[][] inputs = new double[samplesSet.Count][];
@@ -99,7 +99,7 @@ namespace NeuralNetwork1
 
             stopWatch.Restart();
 
-            while (epoch_to_run < epochs_count && error > acceptable_erorr)
+            while (epoch_to_run < epochs_count && error > acceptableError)
             {
                 epoch_to_run++;
                 error = teacher.RunEpoch(inputs, outputs);

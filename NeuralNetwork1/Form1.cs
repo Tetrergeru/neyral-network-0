@@ -69,7 +69,7 @@ namespace NeuralNetwork1
 
             label1.Text = "Распознано : " + figure.recognizedClass.ToString();
 
-            label8.Text = String.Join("\n", net.getOutput().Select(d => d.ToString()));
+            label8.Text = string.Join("\n", net.getOutput());
             pictureBox1.Image = generator.genBitmap();
             pictureBox1.Invalidate();
         }
