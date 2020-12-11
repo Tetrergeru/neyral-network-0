@@ -130,7 +130,7 @@ namespace NeuralNetwork1
         public override double TestOnDataSet(SamplesSet testSet)
         {
             double correct = 0.0;
-            for (int i = 0; i < testSet.Count; ++i)
+            for (var i = 0; i < testSet.Count; ++i)
             {
                 testSet[i].output = network.Compute(testSet[i].input);
                 testSet[i].ProcessOutput();

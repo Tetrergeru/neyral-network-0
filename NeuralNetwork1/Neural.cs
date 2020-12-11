@@ -20,7 +20,7 @@ namespace NeuralNetwork1
 
         private Matrix[] _matrices;
 
-        private List<Matrix> _results;
+        private List<double[]> _results;
 
         private double[] _result;
 
@@ -43,23 +43,23 @@ namespace NeuralNetwork1
             _matrices = new Matrix[structure.Count - 1];
             for (var i = 0; i < _matrices.Length; i++)
                 _matrices[i] = new Matrix(structure[i], structure[i + 1])
-                    .Applied(_ => _random.NextDouble());
+                    .Applied(_ => _random.NextDouble() * 2 - 1);
         }
 
         public override int Train(Sample sample, bool parallel = true)
         {
             Calculate(sample.input);
-            sample.output = _result;
-            sample.ProcessOutput();
-            var error = Matrix.Row(sample.error);
-            var delta = error ^ _results[_matrices.Length].Applied(DSigmoid);
-            _matrices[_matrices.Length - 1] += _results[_matrices.Length - 1].Transposed() * delta;
+            var error = Minus(sample.output, _result);
+            var delta = Mult(error, DSigmoid(_results[_matrices.Length]));
             for (var layer = _matrices.Length - 2; layer >= 0; layer--)
             {
+                var prevDelta = delta;
                 error = delta * _matrices[layer + 1].Transposed();
-                delta = error ^ _results[layer + 1].Applied(DSigmoid);
-                _matrices[layer] += _results[layer].Transposed() * delta;
+                _matrices[layer + 1].AddProdFirstTransposed(_results[layer + 1], prevDelta);
+                delta = Mult(error, DSigmoid(_results[layer + 1]));
             }
+            _matrices[0].AddProdFirstTransposed(_results[0], delta);
+
             return 0;
         }
 
@@ -69,12 +69,16 @@ namespace NeuralNetwork1
             var start = DateTime.Now;
             for (var i = 0; i < epochsCount; i++)
             {
-                updateDelegate((i + 1.0) / epochsCount, 0.0, DateTime.Now - start);
                 foreach (var sample in samplesSet.samples)
                 {
                     Train(sample);
                     Console.WriteLine(i);
                 }
+                
+                updateDelegate(
+                    (i + 1.0) / epochsCount,
+                    0.0, DateTime.Now - start
+                );
             }
 
             return 0.0;
@@ -84,14 +88,21 @@ namespace NeuralNetwork1
         {
             Calculate(sample.input);
             sample.output = _result;
-            return FigureType.Undef;
+            sample.ProcessOutput();
+            return sample.recognizedClass;
         }
 
         public override double TestOnDataSet(SamplesSet testSet)
         {
-            foreach (var sample in testSet.samples)
-                Calculate(sample.input);
-            return 0.0;
+            double correct = 0.0;
+            for (var i = 0; i < testSet.Count; ++i)
+            {
+                Calculate(testSet[i].input);
+                testSet[i].output = _result;
+                testSet[i].ProcessOutput();
+                if (testSet[i].actualClass == testSet[i].recognizedClass) correct += 1;
+            }
+            return correct/testSet.Count;
         }
 
         public override double[] getOutput()
@@ -99,23 +110,56 @@ namespace NeuralNetwork1
             return _result;
         }
 
-        private void Calculate(IReadOnlyList<double> input)
+        private void Calculate(double[] input)
         {
-            _results = new List<Matrix>();
-            var res = Matrix.Row(input);
+            _results = new List<double[]>();
+            var res = input;
             foreach (var matrix in _matrices)
             {
                 _results.Add(res);
-                res = (res * matrix).Applied(Sigmoid);
+                res = Sigmoid(res * matrix);
             }
             _results.Add(res);
-            _result = res.ToRow().ToArray();
+            _result = res;
         }
 
         private static double Sigmoid(double x)
             => 1 / (1 + Math.Exp(-x));
 
+        private static double[] Sigmoid(double[] x)
+        {
+            var res = new double[x.Length];
+            for (var i = 0; i < x.Length; i++)
+                res[i] = Sigmoid(x[i]);
+            return res;
+        }
+
         private static double DSigmoid(double x)
             => Sigmoid(x) * (1 - Sigmoid(x));
+        
+        
+        private static double[] DSigmoid(double[] x)
+        {
+            var res = new double[x.Length];
+            for (var i = 0; i < x.Length; i++)
+                res[i] = DSigmoid(x[i]);
+            return res;
+        }
+
+        public static double[] Mult(double[] x, double[] y)
+        {
+            var res = new double[x.Length];
+            for (var i = 0; i < x.Length; i++)
+                res[i] = x[i] * y[i];
+            return res;
+        }
+
+        public static double[] Minus(double[] x, double[] y)
+        {
+            var res = new double[x.Length];
+            for (var i = 0; i < x.Length; i++)
+                res[i] = x[i] - y[i];
+            return res;
+        }
     }
 }

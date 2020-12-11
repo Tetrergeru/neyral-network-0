@@ -36,12 +36,6 @@ namespace NeuralNetwork1
             set => _matrix[i * Width + j] = value;
         }
 
-        public IReadOnlyList<double> ToRow()
-            => Height > 1 ? throw new ArgumentException("Matrix should be one row to use ToRow") : _matrix;
-
-        public IReadOnlyList<double> ToCol()
-            => Width > 1 ? throw new ArgumentException("Matrix should be one col to use ToCol") : _matrix;
-
         public Matrix Applied(Func<double, double> func)
             => Applied((i, j) => func(this[i, j]));
 
@@ -55,14 +49,21 @@ namespace NeuralNetwork1
         {
             if (self.Width != other.Width || self.Height != other.Height)
                 throw new ArgumentException($"self.Width != other.Width || self.Height != other.Height");
-            return self.Applied((i, j) => self[i, j] + other[i, j]);
+            
+            var result = new Matrix(self.Height, self.Width);
+            foreach (var i in Enumerable.Range(0, result.Height))
+                Parallel.For(0, result.Width, j => { result[i, j] = self[i, j] + other[i, j]; });
+            return result;
         }
 
         public static Matrix operator ^(Matrix self, Matrix other)
         {
             if (self.Width != other.Width || self.Height != other.Height)
                 throw new ArgumentException($"self.Width != other.Width || self.Height != other.Height");
-            return self.Applied((i, j) => self[i, j] * other[i, j]);
+            var result = new Matrix(self.Height, self.Width);
+            foreach (var i in Enumerable.Range(0, result.Height))
+                Parallel.For(0, result.Width, j => { result[i, j] = self[i, j] * other[i, j]; });
+            return result;
         }
 
         public static Matrix operator *(Matrix self, Matrix other)
@@ -89,10 +90,23 @@ namespace NeuralNetwork1
             return this;
         }
 
-        public static Matrix Column(IReadOnlyList<double> column)
-            => new Matrix(column.Count, 1).Applied((i, _) => column[i]);
-        
-        public static Matrix Row(IReadOnlyList<double> row)
-            => new Matrix(1, row.Count).Applied((_, j) => row[j]);
+        public static double[] operator *(IReadOnlyList<double> self, Matrix other)
+        {
+            if (self.Count != other.Height)
+                throw new ArgumentException($"self.Width != other.Height; {self.Count} != {other.Height}");
+            var res = new double[other.Width];
+            Parallel.For(0, res.Length, i => { 
+                res[i] = self.Select((t, k) => t * other[k, i]).Sum();
+            });
+
+            return res;
+        }
+
+        public void AddProdFirstTransposed(double[] first, double[] second)
+        {
+            for (var i = 0; i < Height; i++)
+            for (var j = 0; j < Width; j++)
+                this[i, j] += first[i] * second[j];
+        }
     }
 }

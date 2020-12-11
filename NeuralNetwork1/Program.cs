@@ -14,6 +14,8 @@ namespace NeuralNetwork1
         [STAThread]
         static void Main()
         {
+            //var net = new NeuralNetwork(new []{400, 500, 2});
+            //net.Train(new Sample(Enumerable.Range(0, 400).Select(_ => 0.0).ToArray(), 2));
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
