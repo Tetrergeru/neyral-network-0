@@ -23,8 +23,8 @@
         #region Код, автоматически созданный конструктором форм Windows
 
         /// <summary>
-        /// Требуемый метод для поддержки конструктора — не изменяйте 
-        /// содержимое этого метода с помощью редактора кода.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
@@ -62,58 +62,67 @@
             label5 = new System.Windows.Forms.Label();
             label6 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.classCounter)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AccuracyCounter)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EpochesCounter)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TrainingSizeCounter)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.classCounter)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.AccuracyCounter)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.EpochesCounter)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.TrainingSizeCounter)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(77, 47);
+            label2.Location = new System.Drawing.Point(90, 54);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(84, 13);
+            label2.Size = new System.Drawing.Size(90, 15);
             label2.TabIndex = 2;
             label2.Text = "Структура сети";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(8, 73);
+            label4.Location = new System.Drawing.Point(9, 84);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(153, 13);
+            label4.Size = new System.Drawing.Size(169, 15);
             label4.TabIndex = 5;
             label4.Text = "Размер обучающей выборки";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new System.Drawing.Point(69, 100);
+            label5.Location = new System.Drawing.Point(80, 115);
             label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(92, 13);
+            label5.Size = new System.Drawing.Size(100, 15);
             label5.TabIndex = 7;
             label5.Text = "Количество эпох";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new System.Drawing.Point(23, 194);
+            label6.Location = new System.Drawing.Point(27, 224);
             label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(54, 13);
+            label6.Size = new System.Drawing.Size(59, 15);
             label6.TabIndex = 9;
             label6.Text = "Точность";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new System.Drawing.Point(636, 395);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(42, 15);
+            label7.TabIndex = 14;
+            label7.Text = "Status:";
             // 
             // pictureBox1
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.Location = new System.Drawing.Point(9, 10);
+            this.pictureBox1.Location = new System.Drawing.Point(10, 12);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(500, 500);
+            this.pictureBox1.Size = new System.Drawing.Size(583, 576);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -122,9 +131,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(514, 10);
+            this.label1.Location = new System.Drawing.Point(600, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 13);
+            this.label1.Size = new System.Drawing.Size(88, 15);
             this.label1.TabIndex = 2;
             this.label1.Text = "Какой-то текст";
             // 
@@ -146,9 +155,9 @@
             this.groupBox1.Controls.Add(this.TrainingSizeCounter);
             this.groupBox1.Controls.Add(label4);
             this.groupBox1.Controls.Add(label2);
-            this.groupBox1.Location = new System.Drawing.Point(514, 40);
+            this.groupBox1.Location = new System.Drawing.Point(600, 46);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(294, 299);
+            this.groupBox1.Size = new System.Drawing.Size(343, 345);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Параметры сети";
@@ -156,9 +165,9 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(129, 22);
+            this.label11.Location = new System.Drawing.Point(150, 25);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(31, 13);
+            this.label11.Size = new System.Drawing.Size(32, 15);
             this.label11.TabIndex = 21;
             this.label11.Text = "Сеть";
             // 
@@ -166,12 +175,10 @@
             // 
             this.netTypeBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.netTypeBox.FormattingEnabled = true;
-            this.netTypeBox.Items.AddRange(new object[] {
-            "Hand Crafted Perseptron",
-            "Accord.Net Perseptron"});
-            this.netTypeBox.Location = new System.Drawing.Point(166, 19);
+            this.netTypeBox.Items.AddRange(new object[] {"Hand Crafted Perseptron", "Accord.Net Perseptron"});
+            this.netTypeBox.Location = new System.Drawing.Point(194, 22);
             this.netTypeBox.Name = "netTypeBox";
-            this.netTypeBox.Size = new System.Drawing.Size(121, 21);
+            this.netTypeBox.Size = new System.Drawing.Size(140, 23);
             this.netTypeBox.TabIndex = 20;
             this.netTypeBox.SelectedIndexChanged += new System.EventHandler(this.netTypeBox_SelectedIndexChanged);
             // 
@@ -180,26 +187,26 @@
             this.parallelCheckBox.AutoSize = true;
             this.parallelCheckBox.Checked = true;
             this.parallelCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.parallelCheckBox.Location = new System.Drawing.Point(34, 243);
+            this.parallelCheckBox.Location = new System.Drawing.Point(40, 280);
             this.parallelCheckBox.Name = "parallelCheckBox";
-            this.parallelCheckBox.Size = new System.Drawing.Size(139, 17);
+            this.parallelCheckBox.Size = new System.Drawing.Size(150, 19);
             this.parallelCheckBox.TabIndex = 19;
             this.parallelCheckBox.Text = "Параллельный расчёт";
             this.parallelCheckBox.UseVisualStyleBackColor = true;
             // 
             // netStructureBox
             // 
-            this.netStructureBox.Location = new System.Drawing.Point(167, 44);
+            this.netStructureBox.Location = new System.Drawing.Point(195, 51);
             this.netStructureBox.Name = "netStructureBox";
-            this.netStructureBox.Size = new System.Drawing.Size(120, 20);
+            this.netStructureBox.Size = new System.Drawing.Size(139, 23);
             this.netStructureBox.TabIndex = 18;
             this.netStructureBox.Text = "400;500;20;2";
             // 
             // recreateNetButton
             // 
-            this.recreateNetButton.Location = new System.Drawing.Point(77, 161);
+            this.recreateNetButton.Location = new System.Drawing.Point(90, 186);
             this.recreateNetButton.Name = "recreateNetButton";
-            this.recreateNetButton.Size = new System.Drawing.Size(140, 30);
+            this.recreateNetButton.Size = new System.Drawing.Size(163, 35);
             this.recreateNetButton.TabIndex = 17;
             this.recreateNetButton.Text = "Пересоздать сеть";
             this.recreateNetButton.UseVisualStyleBackColor = true;
@@ -208,41 +215,29 @@
             // 
             // classCounter
             // 
-            this.classCounter.Location = new System.Drawing.Point(167, 125);
-            this.classCounter.Maximum = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
-            this.classCounter.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.classCounter.Location = new System.Drawing.Point(195, 144);
+            this.classCounter.Maximum = new decimal(new int[] {4, 0, 0, 0});
+            this.classCounter.Minimum = new decimal(new int[] {1, 0, 0, 0});
             this.classCounter.Name = "classCounter";
-            this.classCounter.Size = new System.Drawing.Size(120, 20);
+            this.classCounter.Size = new System.Drawing.Size(140, 23);
             this.classCounter.TabIndex = 16;
-            this.classCounter.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
+            this.classCounter.Value = new decimal(new int[] {2, 0, 0, 0});
             this.classCounter.ValueChanged += new System.EventHandler(this.classCounter_ValueChanged);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(50, 125);
+            this.label10.Location = new System.Drawing.Point(58, 144);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(111, 13);
+            this.label10.Size = new System.Drawing.Size(119, 15);
             this.label10.TabIndex = 15;
             this.label10.Text = "Количество классов";
             // 
             // testNetButton
             // 
-            this.testNetButton.Location = new System.Drawing.Point(163, 261);
+            this.testNetButton.Location = new System.Drawing.Point(190, 301);
             this.testNetButton.Name = "testNetButton";
-            this.testNetButton.Size = new System.Drawing.Size(100, 30);
+            this.testNetButton.Size = new System.Drawing.Size(117, 35);
             this.testNetButton.TabIndex = 14;
             this.testNetButton.Text = "Тест";
             this.testNetButton.UseVisualStyleBackColor = true;
@@ -251,9 +246,9 @@
             // 
             // netTrainButton
             // 
-            this.netTrainButton.Location = new System.Drawing.Point(31, 261);
+            this.netTrainButton.Location = new System.Drawing.Point(36, 301);
             this.netTrainButton.Name = "netTrainButton";
-            this.netTrainButton.Size = new System.Drawing.Size(100, 30);
+            this.netTrainButton.Size = new System.Drawing.Size(117, 35);
             this.netTrainButton.TabIndex = 11;
             this.netTrainButton.Text = "Обучить";
             this.netTrainButton.UseVisualStyleBackColor = true;
@@ -262,81 +257,57 @@
             // 
             // AccuracyCounter
             // 
-            this.AccuracyCounter.Location = new System.Drawing.Point(25, 210);
+            this.AccuracyCounter.Location = new System.Drawing.Point(29, 242);
             this.AccuracyCounter.Maximum = 100;
             this.AccuracyCounter.Name = "AccuracyCounter";
-            this.AccuracyCounter.Size = new System.Drawing.Size(245, 45);
+            this.AccuracyCounter.Size = new System.Drawing.Size(286, 45);
             this.AccuracyCounter.TabIndex = 10;
             this.AccuracyCounter.TickFrequency = 10;
             this.AccuracyCounter.Value = 80;
             // 
             // EpochesCounter
             // 
-            this.EpochesCounter.Location = new System.Drawing.Point(167, 98);
-            this.EpochesCounter.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.EpochesCounter.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.EpochesCounter.Location = new System.Drawing.Point(195, 113);
+            this.EpochesCounter.Maximum = new decimal(new int[] {1000000, 0, 0, 0});
+            this.EpochesCounter.Minimum = new decimal(new int[] {1, 0, 0, 0});
             this.EpochesCounter.Name = "EpochesCounter";
-            this.EpochesCounter.Size = new System.Drawing.Size(120, 20);
+            this.EpochesCounter.Size = new System.Drawing.Size(140, 23);
             this.EpochesCounter.TabIndex = 8;
-            this.EpochesCounter.Value = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
+            this.EpochesCounter.Value = new decimal(new int[] {20, 0, 0, 0});
             // 
             // TrainingSizeCounter
             // 
-            this.TrainingSizeCounter.Location = new System.Drawing.Point(167, 71);
-            this.TrainingSizeCounter.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.TrainingSizeCounter.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.TrainingSizeCounter.Location = new System.Drawing.Point(195, 82);
+            this.TrainingSizeCounter.Maximum = new decimal(new int[] {100000, 0, 0, 0});
+            this.TrainingSizeCounter.Minimum = new decimal(new int[] {1, 0, 0, 0});
             this.TrainingSizeCounter.Name = "TrainingSizeCounter";
-            this.TrainingSizeCounter.Size = new System.Drawing.Size(120, 20);
+            this.TrainingSizeCounter.Size = new System.Drawing.Size(140, 23);
             this.TrainingSizeCounter.TabIndex = 6;
-            this.TrainingSizeCounter.Value = new decimal(new int[] {
-            700,
-            0,
-            0,
-            0});
+            this.TrainingSizeCounter.Value = new decimal(new int[] {700, 0, 0, 0});
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(556, 367);
+            this.label8.Location = new System.Drawing.Point(649, 423);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(35, 13);
+            this.label8.Size = new System.Drawing.Size(38, 15);
             this.label8.TabIndex = 6;
             this.label8.Text = "label8";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(522, 367);
+            this.label9.Location = new System.Drawing.Point(609, 423);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(16, 52);
+            this.label9.Size = new System.Drawing.Size(16, 60);
             this.label9.TabIndex = 7;
             this.label9.Text = "0:\r\n1:\r\n2:\r\n3:";
             // 
             // trainOneButton
             // 
-            this.trainOneButton.Location = new System.Drawing.Point(514, 480);
+            this.trainOneButton.Location = new System.Drawing.Point(600, 554);
             this.trainOneButton.Name = "trainOneButton";
-            this.trainOneButton.Size = new System.Drawing.Size(126, 30);
+            this.trainOneButton.Size = new System.Drawing.Size(147, 35);
             this.trainOneButton.TabIndex = 8;
             this.trainOneButton.Text = "Обучить образцу";
             this.trainOneButton.UseVisualStyleBackColor = true;
@@ -344,20 +315,20 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(517, 424);
+            this.progressBar1.Location = new System.Drawing.Point(603, 489);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(291, 22);
+            this.progressBar1.Size = new System.Drawing.Size(339, 25);
             this.progressBar1.Step = 1;
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar1.TabIndex = 10;
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.infoStatusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 519);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.infoStatusLabel});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 602);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(815, 22);
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(951, 22);
             this.statusStrip1.TabIndex = 11;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -372,9 +343,9 @@
             // elapsedTimeLabel
             // 
             this.elapsedTimeLabel.AutoSize = true;
-            this.elapsedTimeLabel.Location = new System.Drawing.Point(522, 449);
+            this.elapsedTimeLabel.Location = new System.Drawing.Point(609, 518);
             this.elapsedTimeLabel.Name = "elapsedTimeLabel";
-            this.elapsedTimeLabel.Size = new System.Drawing.Size(43, 13);
+            this.elapsedTimeLabel.Size = new System.Drawing.Size(45, 15);
             this.elapsedTimeLabel.TabIndex = 12;
             this.elapsedTimeLabel.Text = "Время:";
             // 
@@ -387,26 +358,17 @@
             // StatusLabel
             // 
             this.StatusLabel.AutoSize = true;
-            this.StatusLabel.Location = new System.Drawing.Point(588, 342);
+            this.StatusLabel.Location = new System.Drawing.Point(686, 395);
             this.StatusLabel.Name = "StatusLabel";
-            this.StatusLabel.Size = new System.Drawing.Size(38, 13);
+            this.StatusLabel.Size = new System.Drawing.Size(40, 15);
             this.StatusLabel.TabIndex = 15;
             this.StatusLabel.Text = "NONE";
             // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new System.Drawing.Point(545, 342);
-            label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(40, 13);
-            label7.TabIndex = 14;
-            label7.Text = "Status:";
-            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(815, 541);
+            this.ClientSize = new System.Drawing.Size(951, 624);
             this.Controls.Add(this.StatusLabel);
             this.Controls.Add(label7);
             this.Controls.Add(this.elapsedTimeLabel);
@@ -423,18 +385,17 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Банальный студенческий перспетрон";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.classCounter)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AccuracyCounter)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EpochesCounter)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TrainingSizeCounter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.classCounter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.AccuracyCounter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.EpochesCounter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.TrainingSizeCounter)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
